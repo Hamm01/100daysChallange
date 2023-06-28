@@ -10,8 +10,6 @@
 function isAnagram(str1, str2) {
   let charMap1 = stringCharmap(str1)
   let charMap2 = stringCharmap(str2)
-  console.log(charMap1)
-  console.log(charMap2)
   if (Object.keys(charMap1).length !== Object.keys(charMap2).length) {
     return false
   }
@@ -26,16 +24,16 @@ function isAnagram(str1, str2) {
 
 function stringCharmap(str) {
   let charMap = {}
-  for (let char of str.replace(/[^\w]/g, '').toLowerCase()) {
+  for (let char of str.toLowerCase()) {
     charMap[char] = charMap[char] + 1 || 1
   }
   return charMap
 }
 
-const bool = isAnagram('Elite', 'eeistl')
-console.log(bool)
+// const bool = isAnagram('Elite', 'eeistl')
+// console.log(bool)
 
-// module.exports = isAnagram;
+module.exports = isAnagram
 
 /*
 Anagram Easy method
