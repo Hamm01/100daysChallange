@@ -1,4 +1,4 @@
-# These are challanges based on Java script, Mern stack
+## These are challanges based on Java script, Mern stack
 
 ## Above directories explain the questions and answers in code,
 
