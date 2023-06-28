@@ -23,7 +23,7 @@ then in Vscode terminal write the below commands to run specific file
 
 ```bash
   npm init -y
-  npm i jest -g
+  npm install
 ```
 
 this will take sometime to install the packages. now setup is complete we can execute our problem files
