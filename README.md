@@ -13,7 +13,7 @@ you need to install the nodeJs in
 Download the folder as Zip and extract it on destop or you can clone it using git clone command
 
 open the folder "100daychallange" in VScode .
-then in terminal write the above commands to run specific file
+then in terminal write the below commands to run specific file
 
 ```bash
   cd 100daychallange
@@ -22,4 +22,19 @@ then in terminal write the above commands to run specific file
   node anagram.js
 ```
 
-This is how you run each program and test the result
+The above are folders 100daychallange>Js-Questions>anagram>anagram.js
+
+To execute the particular problem you need to go to specific folder
+eg. 100daychallange > Js-Questions > anagram > anagram.js
+then run the code in terminal
+
+```bash
+  node "filename.js"
+```
+
+This will run each file
+To go back to previous folder you can use command
+
+```bash
+  cd ..
+```
