@@ -43,6 +43,7 @@ const items = [
 
 function calculateTotalSpentByCategory(itemsArray) {
   let temp = {}
+  let finalItemArray = []
 
   itemsArray.forEach(item => {
     let currentPrice = item.price
@@ -57,9 +58,16 @@ function calculateTotalSpentByCategory(itemsArray) {
     }
   })
 
-  return temp
+  for (let key in temp) {
+    var temp_obj = {
+      category: key,
+      total_price: temp[key]
+    }
+    finalItemArray.push(temp_obj)
+  }
+
+  console.log(finalItemArray)
+  return finalItemArray
 }
 
 calculateTotalSpentByCategory(items)
-
-// we need to console.log above function if you want to see the result
