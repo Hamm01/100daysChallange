@@ -10,34 +10,11 @@
 
 const items = [
   {
-    itemName: 'toothpaste',
-    category: 'dailyuse',
-    price: 100,
-    timestamp: 'Wed, 14 Jun 2017'
-  },
-  {
-    itemName: 'pepsi',
-    category: 'fruitdrink',
-    price: 20,
-    timestamp: 'Wed, 13 Jun 2017'
-  },
-  {
-    itemName: 'brush',
-    category: 'dailyuse',
+    id: 1,
+    timestamp: 1656076800000,
     price: 10,
-    timestamp: 'Wed, 12 Jun 2017'
-  },
-  {
-    itemName: 'pepsi-lite',
-    category: 'fruitdrink',
-    price: 20,
-    timestamp: 'Wed, 10 Jun 2017'
-  },
-  {
-    itemName: 'cauliflower',
-    category: 'vegetabe',
-    price: 30,
-    timestamp: 'Wed, 13 Jun 2017'
+    category: 'Food',
+    itemName: 'Pizza'
   }
 ]
 
@@ -61,13 +38,13 @@ function calculateTotalSpentByCategory(itemsArray) {
   for (let key in temp) {
     var temp_obj = {
       category: key,
-      total_price: temp[key]
+      totalSpent: temp[key]
     }
     finalItemArray.push(temp_obj)
   }
 
-  console.log(finalItemArray)
+  //   console.log(finalItemArray)
   return finalItemArray
 }
 
-calculateTotalSpentByCategory(items)
+module.exports = calculateTotalSpentByCategory
