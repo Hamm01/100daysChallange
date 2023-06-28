@@ -1,0 +1,16 @@
+{
+  "name": "100daychallange",
+  "version": "1.0.0",
+  "description": "Based on weekly Assignments of js and mern i am putting\r all the problems in respective folder name with solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:w": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.5.0"
+  }
+}

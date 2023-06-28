@@ -22,11 +22,29 @@ open the folder "100daychallange" in VScode .
 then in Vscode terminal write the below commands to run specific file
 
 ```bash
+  npm init -y
+  npm i jest -g
+```
+
+this will take sometime to install the packages. now setup is complete we can execute our problem files
+and also the test cases
+
+below we are going to specific folder the file we need to run . we can execute the file with below steps
+
+```bash
   cd 100daychallange
   cd Js-Questions
   cd anagram
   node anagram.js
 ```
+
+or
+
+```bash
+  jest test.js
+```
+
+the above command to run the test case for that problem
 
 The above are folder names 100daychallange>Js-Questions>anagram>anagram.js
 
