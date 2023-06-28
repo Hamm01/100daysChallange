@@ -13,12 +13,12 @@ After extracting the Folder 100daysChallange at desktop
 1. open this folder with Vscode
 2. open terminal
    terminal looks like this and you must be at this path
-   ![Logo](https://i.imgur.com/eP2T6fH.png)
+
+![Logo](https://i.imgur.com/eP2T6fH.png)
 
 3. if you installed the npm steps
-4. To run the test case for particular problem
-   you need you must need the path of folder and test the file write the
-   command like below
+4. To run the test case we need to copy type path for the problem
+   like written below
 
 ```bash
   jest Js-Questions/anagram/test.js
@@ -27,4 +27,5 @@ After extracting the Folder 100daysChallange at desktop
 
 when you enter that
 the test case will run like this
+
 ![Logo](https://i.imgur.com/HQKE93q.png)
