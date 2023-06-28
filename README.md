@@ -6,14 +6,16 @@ all the problems in respective folder name with solutions
 ## Installation
 
 In case to run all the js files
-you need to install the nodeJs in
+you need to install the nodeJs in your system
 
 ![Logo](https://nodejs.org/static/images/favicons/favicon.png)Download Nodejs https://nodejs.org/en/download
 
-Download the folder as Zip and extract it on destop or you can clone it using git clone command
+Download the folder from the git as Zip ![Logo](https://i.imgur.com/tEOiHMU.png)
+
+extract it on destop or you can clone it using git clone command
 
 open the folder "100daychallange" in VScode .
-then in terminal write the below commands to run specific file
+then in Vscode terminal write the below commands to run specific file
 
 ```bash
   cd 100daychallange
