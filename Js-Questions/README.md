@@ -4,7 +4,10 @@
 2. counting Executuion time
 3. palindrome
 4. expenditure-analysis
-5. counter
+5. counter-async
+6. readFile-async
+7. writeFile-async
+8. file-cleaner-async
 
 ## How to run test cases
 
