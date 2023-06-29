@@ -53,7 +53,8 @@ eg. 100daychallange > Js-Questions > anagram > anagram.js
 then run the code in terminal
 
 ```bash
-  node "filename.js"
+  cd ./Js-Questions/readFile-async/
+  node readFile.js
 ```
 
 This will execute the Js file and output will be printed in terminal.
