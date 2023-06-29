@@ -1,4 +1,4 @@
-# 100daysChallange For Js And Mern
+# 100daysChallange For Js And MERN
 
 Based on weekly Assignments of js and mern i am putting
 all the problems in respective folder name with solutions
@@ -63,3 +63,9 @@ To go back to previous folder you can use command
 ```bash
   cd ..
 ```
+
+If you not able to understand how we run the file till now
+after opening 100DAYCHALLANGE folder in vscode , you can go to specific
+problem seen below in image
+
+![Logo](https://i.imgur.com/uRBvbsg.png)
