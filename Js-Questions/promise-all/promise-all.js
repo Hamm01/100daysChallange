@@ -37,8 +37,7 @@ function delay3() {
 function waitForPromises() {
   const start = Date.now()
   Promise.all([delay1(), delay2(), delay3()]).then(str => {
-    console.log(str)
-    console.log('Promise .all run ')
+    console.log(str) // this will print array of resolved data respectivly by each promise
     const end = Date.now()
     const totalTime = end - start
     console.log(`Total time taken ${totalTime} milliseconds.`)
