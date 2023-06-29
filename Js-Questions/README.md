@@ -8,6 +8,10 @@
 6. readFile-async
 7. writeFile-async
 8. file-cleaner-async
+9. clock-async
+10. promisify-setTimeout
+11. sleep-completely-async
+12. promise-all
 
 ## How to run test cases
 

@@ -64,8 +64,10 @@ To go back to previous folder you can use command
   cd ..
 ```
 
-If you not able to understand how we run the file till now
-after opening 100DAYCHALLANGE folder in vscode , you can go to specific
-problem seen below in image
+If you not able to understand how we run the file till now.
+you just need to open folder 100DAYCHALLANGE.
+
+1. After opening 100DAYCHALLANGE folder in vscode , you can go to specific
+   problem seen below in image
 
 ![Logo](https://i.imgur.com/uRBvbsg.png)
