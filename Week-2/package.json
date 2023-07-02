@@ -1,0 +1,16 @@
+{
+  "name": "week-2",
+  "version": "1.0.0",
+  "description": "In this series of assignments, you are going to create native HTTP servers in Node.js which will handle different kinds of application logics.",
+  "main": "todoListApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
