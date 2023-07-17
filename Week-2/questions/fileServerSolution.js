@@ -1,8 +1,10 @@
 const express = require('express')
 const fs = require('fs')
+const cors = require('cors')
 const path = require('path')
 const app = express()
 
+app.use(cors())
 app.get('/files', (req, res) => {
   fs.readdir(path.join(__dirname, './files/'), (err, files) => {
     if (err) {
@@ -33,4 +35,4 @@ app.all('*', (req, res) => {
 app.listen(3000, err => {
   console.log('app started at 3000')
 })
-module.exports = app
+// module.exports = app

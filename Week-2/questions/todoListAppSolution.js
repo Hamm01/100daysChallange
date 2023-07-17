@@ -1,9 +1,10 @@
 let express = require('express')
 let bodyParser = require('body-parser')
-
+const cors = require('cors')
 const app = express()
 const port = 3000
 app.use(bodyParser.json())
+app.use(cors())
 let todoArray = []
 
 function createTodo(req, res) {
