@@ -67,10 +67,10 @@ app.listen(3000, () => {
 /*
 
 {
-    "username": "Himanish@gmail.com",
+    "username": "Ashneer@gmail.com",
     "password": "stebinPRotexted",
-    "firstname": "Himanish",
-    "lastname": "Kochhar"
+    "firstname": "Ashneer",
+    "lastname": "Grover"
 }
 
 
