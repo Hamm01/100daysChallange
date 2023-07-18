@@ -46,7 +46,7 @@ const Course = mongoose.model('Course', courseSchema)
 // Connect to MongoDB
 
 mongoose.connect(
-  'mongodb+srv://lejav36928:mJgzTDpIH@cluster0.bzkb2ko.mongodb.net/courses',
+  'mongodb+srv://lejav36928:mJgzTDpI@cluster0.bzkb2ko.mongodb.net/courses',
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
 function generateAdminToken({ username }) {
