@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+}
+.appContainer {
+  width: 100vw;
+  height: 100vh;
+  background: #eeeeee;
+}
+.signup-container {
+  height: 95vh;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+.appbar {
+  height: 5vh;
+
+  /* border-bottom: 1px solid white; */
+}
+.appbar-container {
+  padding-top: 15px;
+  height: 5vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 50px;
+  padding-right: 50px;
+  /* background-color: #cacaca; */
+}
+
+.Course-Container {
+  display: grid;
+  grid-template-columns: repeat(4, 340px);
+  grid-auto-rows: 250px;
+  row-gap: 50px;
+  column-gap: 50px;
+  justify-content: space-between;
+  overflow: hidden;
+}
