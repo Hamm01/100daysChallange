@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Js Course",
+    "description": "Full course on js",
+    "price": 4999,
+    "imageLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvvVVY3hBWkAimGx7cz8uD_5JEC-yQYDZJtWGSaVDxc83oaKWAutx-_h2UbSbDd8CQx-Y&usqp=CAU",
+    "published": true,
+    "id": 1
+  },
+  {
+    "title": "python Course ",
+    "description": "Full course on python",
+    "price": 4999,
+    "imageLink": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210215160315/FREE-Python-Course-For-Beginners.png",
+    "published": true,
+    "id": 2
+  },
+  {
+    "title": "flutter Course ",
+    "description": "Full course on flutter",
+    "price": 4999,
+    "imageLink": "https://www.classcentral.com/report/wp-content/uploads/2022/09/BCG-Flutter-Featured-Banner.png",
+    "published": true,
+    "id": 3
+  },
+  {
+    "title": "IOS Course ",
+    "description": "Full course on IOS",
+    "price": 4999,
+    "imageLink": "https://i.ytimg.com/vi/4-UEMLMwX8g/maxresdefault.jpg",
+    "published": true,
+    "id": 4
+  },
+  {
+    "title": "Android Course",
+    "description": "Full course on Android",
+    "price": 4999,
+    "imageLink": "https://elysiumacademy.org/wp-content/uploads/2018/12/Android.jpg",
+    "published": true,
+    "id": 5
+  },
+  {
+    "title": "Rust Course ",
+    "description": "Full course on Rust",
+    "price": 4999,
+    "imageLink": "https://ccweb.imgix.net/https%3A%2F%2Fwww.classcentral.com%2Freport%2Fwp-content%2Fuploads%2F2022%2F07%2FRust-BCG-Banner.png?auto=format&h=300&ixlib=php-4.1.0&s=b6f9dfbc2de154191786bf6564b42335",
+    "published": true,
+    "id": 6
+  },
+  {
+    "title": ".NET Course ",
+    "description": "Full course on .NET",
+    "price": 4999,
+    "imageLink": "https://cdn.mindmajix.com/courses/net-training-110620.png",
+    "published": true,
+    "id": 7
+  },
+  {
+    "title": "Golang course",
+    "description": "Full course on Golang",
+    "price": 4999,
+    "imageLink": "https://www.freecodecamp.org/news/content/images/2019/06/golang.png",
+    "published": true,
+    "id": 8
+  }
+]

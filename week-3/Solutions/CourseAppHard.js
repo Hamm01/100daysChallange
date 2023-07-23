@@ -46,7 +46,7 @@ const Course = mongoose.model('Course', courseSchema)
 // Connect to MongoDB
 
 mongoose.connect(
-  'mongodb+srv://lejav36928:mJgzTDpI@cluster0.bzkb2ko.mongodb.net/courses',
+  'mongodb+srv://lejav36928:mJgzTDpIH@cluster0.bzkb2ko.mongodb.net/courses',
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
 function generateAdminToken({ username }) {
@@ -71,6 +71,11 @@ function authenticateAdminRoute(req, res, next) {
 }
 
 // Admin Routes
+app.get('/admin/me', authenticateAdminRoute, async (req, res) => {
+  const admin = await Admin.findOne({ username: req.admin.username })
+  res.status(200).json({ username: admin.username })
+})
+
 app.post('/admin/signup', async (req, res) => {
   const { username, password } = req.body
   const admin = await Admin.findOne({ username })

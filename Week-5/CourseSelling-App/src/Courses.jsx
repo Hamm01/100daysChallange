@@ -1,28 +1,31 @@
+import axios from 'axios'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
-import { TOKEN_KEY } from './Signup'
+import { TOKEN_KEY } from './App'
+import { backendUrl } from './App'
+import { useNavigate } from 'react-router-dom'
+
 export default function Courses() {
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
-    function callback1(data) {
-      if (data.COURSES) {
-        setCourses(data.COURSES)
-      }
-    }
+    axios
+      .get(`${backendUrl}/admin/courses`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+        }
+      })
+      .then(callback)
 
     function callback(response) {
-      response.json().then(callback1)
-    }
-
-    fetch('http://localhost:3000/admin/courses', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+      console.log(response)
+      if (response.status == 200 && response.data.courses) {
+        setCourses(response.data.courses)
       }
-    }).then(callback)
+    }
   }, [])
 
   return (
@@ -34,10 +37,11 @@ export default function Courses() {
   )
 }
 
-function Coursecomponent(props) {
+export function Coursecomponent(props) {
+  const navigate = useNavigate()
   const course = props.course
   return (
-    <Paper elevation={3} style={{ overflow: 'hidden' }}>
+    <Paper elevation={0} style={{ display: 'flex', flexDirection: 'column' }}>
       <Typography variant="h6" style={{ marginBottom: 5, textAlign: 'center' }}>
         {course.title}
       </Typography>
@@ -47,7 +51,23 @@ function Coursecomponent(props) {
       >
         {course.description}
       </Typography>
-      <img src={course.imageLink} style={{ width: '100%', height: '80%' }} />
+      <img src={course.imageLink} style={{ width: '100%', height: '70%' }} />
+      <Button
+        variant="contained"
+        size="medium"
+        style={{
+          alignSelf: 'center',
+          paddingLeft: '30px',
+          paddingRight: '30px',
+          marginTop: 10,
+          marginBottom: 10
+        }}
+        onClick={() => {
+          navigate(`/course/${course._id}`)
+        }}
+      >
+        Edit
+      </Button>
     </Paper>
   )
 }

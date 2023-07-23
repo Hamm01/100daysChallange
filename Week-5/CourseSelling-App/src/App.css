@@ -11,7 +11,7 @@
   display: flex;
   margin: 0;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .appbar {
   height: 5vh;
@@ -19,24 +19,57 @@
   /* border-bottom: 1px solid white; */
 }
 .appbar-container {
-  padding-top: 15px;
-  height: 5vh;
+  min-height: 6vh;
   display: flex;
   /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
-
+  align-content: center;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
   padding-left: 50px;
   padding-right: 50px;
-  /* background-color: #cacaca; */
+  background-color: #f7f7f7;
 }
 
 .Course-Container {
   display: grid;
   grid-template-columns: repeat(4, 340px);
-  grid-auto-rows: 250px;
+  grid-auto-rows: 350px;
   row-gap: 50px;
   column-gap: 50px;
   justify-content: space-between;
   overflow: hidden;
+}
+
+/* .Course-Container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 85vh;
+  background-color: aqua;
+  justify-content: space-around;
+  align-items: center;
+} */
+.update-course-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.course-badge-container {
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding-bottom: 5px;
+}
+
+.grey-box-container {
+  margin-top: 10px;
+  height: 250px;
+  background-color: rgb(5, 1, 36);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -200px;
 }

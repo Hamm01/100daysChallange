@@ -5,6 +5,9 @@ import Appbar from './Appbar'
 import Signin from './Signin'
 import AddCourse from './AddCourse'
 import Courses from './Courses'
+import Course from './Course'
+export const TOKEN_KEY = 'CourseSellingApptoken'
+export const backendUrl = 'http://localhost:3000'
 function App() {
   return (
     <div className="appContainer">
@@ -17,6 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/addcourse" element={<AddCourse />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
+          <Route path="/course/:courseId" element={<Course />}></Route>
         </Routes>
       </div>
     </div>

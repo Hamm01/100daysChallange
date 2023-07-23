@@ -2,29 +2,27 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TOKEN_KEY } from './Signup'
+import { TOKEN_KEY } from './App'
+import axios from 'axios'
+import { backendUrl } from './App'
 
 export default function Appbar() {
   const navigate = useNavigate()
   const [username, setUsername] = useState(null)
   useEffect(() => {
-    function callback1(data) {
-      if (data.username) {
-        setUsername(data.username)
-      }
-    }
+    axios
+      .get(`${backendUrl}/admin/me/`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+        }
+      })
+      .then(callback)
 
     function callback(response) {
-      response.json().then(callback1)
-    }
-
-    fetch('http://localhost:3000/admin/me', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+      if (response.status == 200 && response.data.username) {
+        setUsername(response.data.username)
       }
-    }).then(callback)
+    }
   }, [])
 
   if (username) {
@@ -38,9 +36,24 @@ export default function Appbar() {
             alignItems: 'center'
           }}
         >
-          <Typography variant="subtitle1">{username.split('@')[0]}</Typography>
           <Button
-            variant="text"
+            onClick={() => {
+              navigate('/addcourse')
+            }}
+            style={{ marginRight: 20 }}
+          >
+            Add course
+          </Button>
+          <Button
+            onClick={() => {
+              navigate('/courses')
+            }}
+            style={{ marginRight: 20 }}
+          >
+            Courses
+          </Button>
+          <Button
+            variant="contained"
             size="medium"
             onClick={() => {
               // navigate('/signup')

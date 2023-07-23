@@ -11,6 +11,8 @@ by one
     1. Signup page
     2. Signin page
     3. Courses page
+    4. Add Course page
+    5. Edit Course Page
 
 ### Libraries used to Implement frontend and styling
 

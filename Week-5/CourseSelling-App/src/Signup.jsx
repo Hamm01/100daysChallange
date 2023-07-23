@@ -3,7 +3,8 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-export const TOKEN_KEY = 'CourseSellingApptoken'
+import axios from 'axios'
+import { TOKEN_KEY } from './App'
 
 export default function Signup() {
   const [username, SetUsername] = useState()
@@ -61,23 +62,13 @@ export default function Signup() {
     </div>
   )
   async function SignupRequest() {
-    const URL = 'http://localhost:3000/admin/signup'
-    const response = await fetchRequest(URL)
-    const data = await response.json()
+    const URL = 'http://127.0.0.1:3000/admin/signup'
+    const response = await axios.post(URL, {
+      username,
+      password
+    })
+    const data = response.data
     localStorage.setItem(TOKEN_KEY, data.token)
     window.location = '/'
-  }
-
-  function fetchRequest(url) {
-    return fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        username,
-        password
-      }),
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
   }
 }

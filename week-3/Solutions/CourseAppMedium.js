@@ -19,15 +19,15 @@ let USERS = []
 const ADMIN_SECRET = 'S3cr3t'
 const USER_SECRET = 'S3cr3t-key'
 
-try {
-  ADMINS = JSON.parse(fs.readFileSync('./files/admins.json', 'utf8'))
-  USERS = JSON.parse(fs.readFileSync('./files/users.json', 'utf8'))
-  COURSES = JSON.parse(fs.readFileSync('./files/courses.json', 'utf8'))
-} catch {
-  ADMINS = []
-  COURSES = []
-  USERS = []
-}
+// try {
+ADMINS = JSON.parse(fs.readFileSync('./files/admins.json', 'utf8'))
+COURSES = JSON.parse(fs.readFileSync('./files/courses.json', 'utf8'))
+// USERS = JSON.parse(fs.readFileSync('./files/users.json', 'utf8'))
+// } catch {
+//   ADMINS = []
+//   COURSES = []
+//   USERS = []
+// }
 
 function generateAdminToken({ username }) {
   return jwt.sign({ username, role: 'admin' }, ADMIN_SECRET, {
@@ -64,6 +64,9 @@ app.post('/admin/signup', (req, res) => {
     const token = generateAdminToken(admin)
     res.status(200).json({ message: 'Admin Created Succesfuly', token: token })
   }
+})
+app.post('/admin/me', authenticateAdminRoute, (req, res) => {
+  res.status(200).json({ username: req.admin?.username })
 })
 
 app.post('/admin/login', (req, res) => {

@@ -2,13 +2,15 @@ import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { TOKEN_KEY } from './Signup'
+import { TOKEN_KEY, backendUrl } from './App'
 import { useState } from 'react'
+import axios from 'axios'
 
 export default function AddCourse() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [imagelink, setImageLink] = useState('')
+  const [price, setPrice] = useState('')
   return (
     <div>
       <div>
@@ -23,10 +25,11 @@ export default function AddCourse() {
         elevation={3}
         sx={{
           width: 400,
-          height: 300,
+          minHeight: 300,
           paddingLeft: 5,
           paddingRight: 5,
-          paddingTop: 5
+          paddingTop: 5,
+          paddingBottom: 5
         }}
       >
         <TextField
@@ -68,6 +71,19 @@ export default function AddCourse() {
             marginBottom: 10
           }}
         />
+        <TextField
+          fullWidth
+          id="price"
+          label="Price"
+          variant="outlined"
+          type={'text'}
+          onChange={e => {
+            setPrice(e.target.value)
+          }}
+          style={{
+            marginBottom: 10
+          }}
+        />
         <Button variant="contained" size="large" onClick={courseRequest}>
           Create Course
         </Button>
@@ -76,27 +92,24 @@ export default function AddCourse() {
   )
 
   async function courseRequest() {
-    const URL = 'http://localhost:3000/admin/courses'
+    const URL = `${backendUrl}/admin/courses/`
     const token = localStorage.getItem(TOKEN_KEY)
-    const response = await fetchRequest(URL, token)
-    const data = await response.json()
-    alert('Course Succesfully created!!')
-  }
-
-  function fetchRequest(url, token) {
-    return fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
+    const response = await axios.post(
+      URL,
+      {
         title: title,
         description: description,
-        price: 4999,
+        price: price,
         imageLink: imagelink,
         published: true
-      }),
-      headers: {
-        'content-type': 'application/json',
-        authorization: 'Bearer ' + token
+      },
+      {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
       }
-    })
+    )
+    console.log(response)
+    alert('Course Succesfully created!!')
   }
 }
