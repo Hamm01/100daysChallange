@@ -2,9 +2,9 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TOKEN_KEY } from './App'
+import { TOKEN_KEY } from '../App'
 import axios from 'axios'
-import { backendUrl } from './App'
+import { backendUrl } from '../App'
 
 export default function Appbar() {
   const navigate = useNavigate()

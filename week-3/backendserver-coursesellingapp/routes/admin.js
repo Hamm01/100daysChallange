@@ -35,7 +35,7 @@ router.post('/signup', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.headers
+  const { username, password } = req.body
   const admin = await Admin.findOne({ username, password })
 
   if (!admin) {

@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import axios from 'axios'
-import { TOKEN_KEY } from './App'
+import { TOKEN_KEY, backendUrl } from '../App'
 
 export default function Signup() {
   const [username, SetUsername] = useState()
@@ -62,7 +62,7 @@ export default function Signup() {
     </div>
   )
   async function SignupRequest() {
-    const URL = 'http://127.0.0.1:3000/admin/signup'
+    const URL = `${backendUrl}/admin/signup`
     const response = await axios.post(URL, {
       username,
       password

@@ -2,7 +2,13 @@ import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { useState } from 'react'
+import axios from 'axios'
+import { TOKEN_KEY, backendUrl } from '../App'
+
 export default function Signin() {
+  const [username, SetUsername] = useState('')
+  const [password, SetPassword] = useState('')
   return (
     <div>
       <div>
@@ -32,6 +38,9 @@ export default function Signin() {
           style={{
             marginBottom: 10
           }}
+          onChange={e => {
+            SetUsername(e.target.value)
+          }}
         />
         <TextField
           fullWidth
@@ -42,11 +51,24 @@ export default function Signin() {
           style={{
             marginBottom: 10
           }}
+          onChange={e => {
+            SetPassword(e.target.value)
+          }}
         />
-        <Button variant="contained" size="large">
+        <Button variant="contained" size="large" onClick={SigninRequest}>
           Signin
         </Button>
       </Paper>
     </div>
   )
+  async function SigninRequest() {
+    const URL = `${backendUrl}/admin/login`
+    const response = await axios.post(URL, {
+      username,
+      password
+    })
+    const data = response.data
+    localStorage.setItem(TOKEN_KEY, data.token)
+    window.location = '/'
+  }
 }

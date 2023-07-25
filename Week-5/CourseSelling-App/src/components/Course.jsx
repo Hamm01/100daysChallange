@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { TOKEN_KEY, backendUrl } from './App'
+import { TOKEN_KEY, backendUrl } from '../App'
 
 export default function Course() {
   const { courseId } = useParams()
@@ -32,7 +32,7 @@ export default function Course() {
     return (
       <div
         style={{
-          height: '100vh',
+          height: '93vh',
           justifyContent: 'center',
           alignItems: 'center'
         }}
