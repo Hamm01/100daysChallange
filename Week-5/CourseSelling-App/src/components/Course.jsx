@@ -6,15 +6,26 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { TOKEN_KEY, backendUrl } from '../App'
+import { TOKEN_KEY, BASEURL } from '../App'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { courseState } from '../store/atoms/course'
+import {
+  courseTitle,
+  courseImage,
+  isCourseLoading,
+  coursePrice
+} from '../store/selectors/course'
 
 export default function Course() {
   const { courseId } = useParams()
-  let [course, setCourse] = useState(null)
+  const setCourse = useSetRecoilState(courseState)
+  const courseLoading = useRecoilValue(isCourseLoading)
+
+  // let [course, setCourse] = useState(null)
 
   useEffect(() => {
     axios
-      .get(`${backendUrl}/admin/course/${courseId}`, {
+      .get(`${BASEURL}/admin/course/${courseId}`, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
         }
@@ -23,72 +34,65 @@ export default function Course() {
     function callback(response) {
       console.log(response)
       if (response.data.course) {
-        setCourse(response.data.course)
+        setCourse({ course: response.data.course, isLoading: false })
       }
     }
   }, [])
 
-  if (!course) {
-    return (
-      <div
-        style={{
-          height: '93vh',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        loading...
-      </div>
-    )
+  if (courseLoading) {
+    return <>Loading...</>
   }
 
   return (
     <div>
-      <GreyBox course={course} />
+      <GreyBox />
       <Grid container>
         <Grid item lg={8} md={12} sm={12}>
-          <UpdateCourse course={course} setCourse={setCourse} />
+          <UpdateCourse />
         </Grid>
         <Grid item lg={4} md={12} sm={12}>
-          <Coursetable course={course} />
+          <Coursetable />
         </Grid>
       </Grid>
     </div>
   )
 }
 
-function GreyBox(props) {
+function GreyBox() {
+  const title = useRecoilValue(courseTitle)
   return (
     <div className="grey-box-container">
       <Typography
         variant="h3"
         style={{ textAlign: 'center', fontWeight: 400, color: 'white' }}
       >
-        {props.course.title}
+        {title}
       </Typography>
     </div>
   )
 }
 
-function Coursetable(props) {
-  const course = props.course
+function Coursetable() {
+  const title = useRecoilValue(courseTitle)
+  const imageLink = useRecoilValue(courseImage)
+  const price = useRecoilValue(coursePrice)
   return (
     <div className="course-badge-container">
       <Paper elevation={0} style={{ paddingBottom: '5px' }}>
         <img
-          src={course.imageLink}
+          src={imageLink}
           width={'100%'}
           style={{ borderRadius: '0.5rem' }}
         />
         <div style={{ paddingLeft: 5 }}>
           <Typography variant="h5" style={{ marginBottom: 5 }}>
-            {course.title}
+            {title}
           </Typography>
           <Typography variant="subtitle1" style={{ color: 'grey' }}>
             Price
           </Typography>
           <Typography variant="subtitle1" style={{ marginBottom: 5 }}>
-            Rs. {course.price}
+            Rs. {price}
           </Typography>
         </div>
       </Paper>
@@ -96,13 +100,15 @@ function Coursetable(props) {
   )
 }
 
-function UpdateCourse(props) {
+function UpdateCourse() {
   const { courseId } = useParams()
-  let course = props.course
-  const [title, setTitle] = useState(course.title)
-  const [description, setDescription] = useState(course.description)
-  const [imagelink, setImageLink] = useState(course.imageLink)
-  const [price, setPrice] = useState(course.price)
+  const [courseDetails, setcourse] = useRecoilState(courseState)
+  const [title, setTitle] = useState(courseDetails.course.title)
+  const [description, setDescription] = useState(
+    courseDetails.course.description
+  )
+  const [imagelink, setImageLink] = useState(courseDetails.course.imageLink)
+  const [price, setPrice] = useState(courseDetails.course.price)
   return (
     <div className="update-course-container">
       <Paper
@@ -181,7 +187,7 @@ function UpdateCourse(props) {
   )
 
   async function courseRequest() {
-    const URL = `${backendUrl}/admin/courses/` + courseId
+    const URL = `${BASEURL}/admin/courses/` + courseDetails.course._id
     const token = localStorage.getItem(TOKEN_KEY)
     const response = await axios.put(
       URL,
@@ -194,19 +200,19 @@ function UpdateCourse(props) {
       },
       {
         headers: {
+          'Content-Type': 'application/json',
           Authorization: 'Bearer ' + token
         }
       }
     )
-    const updatedCourse = {
+    let updatedCourse = {
+      _id: courseDetails.course._id,
       title: title,
       description: description,
       price: price,
       imageLink: imagelink,
       published: true
     }
-    props.setCourse(updatedCourse)
-    console.log(response)
-    alert('Course Succesfully Updated!!')
+    setcourse({ isLoading: false, course: updatedCourse })
   }
 }

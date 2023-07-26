@@ -3,29 +3,24 @@ import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TOKEN_KEY } from '../App'
-import axios from 'axios'
-import { backendUrl } from '../App'
+
+import { BASEURL } from '../App'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { userState } from '../store/atoms/user'
+import { userEmailState } from '../store/selectors/userEmail'
+import { isUserLoading } from '../store/selectors/isUserLoading'
 
 export default function Appbar() {
   const navigate = useNavigate()
-  const [username, setUsername] = useState(null)
-  useEffect(() => {
-    axios
-      .get(`${backendUrl}/admin/me/`, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
-        }
-      })
-      .then(callback)
+  const userLoading = useRecoilValue(isUserLoading)
+  const userEmail = useRecoilValue(userEmailState)
+  const setUser = useSetRecoilState(userState)
 
-    function callback(response) {
-      if (response.status == 200 && response.data.username) {
-        setUsername(response.data.username)
-      }
-    }
-  }, [])
+  if (userLoading) {
+    return <></>
+  }
 
-  if (username) {
+  if (userEmail) {
     return (
       <div className="appbar-container">
         <Typography variant="h6">CourseSellingApp</Typography>
@@ -58,7 +53,10 @@ export default function Appbar() {
             onClick={() => {
               // navigate('/signup')
               localStorage.removeItem(TOKEN_KEY)
-              window.location = '/'
+              setUser({
+                isLoading: false,
+                userEmail: null
+              })
             }}
             style={{ marginLeft: 10 }}
           >

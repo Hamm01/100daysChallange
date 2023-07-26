@@ -2,7 +2,7 @@ import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { TOKEN_KEY, backendUrl } from '../App'
+import { TOKEN_KEY, BASEURL } from '../App'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -92,7 +92,7 @@ export default function AddCourse() {
   )
 
   async function courseRequest() {
-    const URL = `${backendUrl}/admin/courses/`
+    const URL = `${BASEURL}/admin/courses/`
     const token = localStorage.getItem(TOKEN_KEY)
     const response = await axios.post(
       URL,

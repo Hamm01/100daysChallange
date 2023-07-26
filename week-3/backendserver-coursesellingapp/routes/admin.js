@@ -55,13 +55,17 @@ router.post('/courses', authenticateAdminRoute, async (req, res) => {
 
 router.put('/courses/:courseId', authenticateAdminRoute, async (req, res) => {
   const courseId = req.params.courseId
-  const course = await Course.findByIdAndUpdate(courseId, req.body, {
-    new: true
-  })
-  if (course) {
-    res.send({ message: 'Course Successfully updated', courseId: courseId })
+  if (courseId) {
+    const course = await Course.findByIdAndUpdate(courseId, req.body, {
+      new: true
+    })
+    if (course) {
+      res.send({ message: 'Course Successfully updated', courseId: courseId })
+    } else {
+      res.status(404).json({ message: 'Course not found' })
+    }
   } else {
-    res.status(404).json({ message: 'Course not found' })
+    res.sendStatus(400)
   }
 })
 

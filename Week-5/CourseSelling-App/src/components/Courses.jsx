@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
-import { TOKEN_KEY, backendUrl } from '../App'
+import { TOKEN_KEY, BASEURL } from '../App'
 import { useNavigate } from 'react-router-dom'
 
 export default function Courses() {
@@ -12,7 +12,7 @@ export default function Courses() {
 
   useEffect(() => {
     axios
-      .get(`${backendUrl}/admin/courses`, {
+      .get(`${BASEURL}/admin/courses`, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
         }

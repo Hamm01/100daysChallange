@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import axios from 'axios'
-import { TOKEN_KEY, backendUrl } from '../App'
+import { TOKEN_KEY, BASEURL } from '../App'
 
 export default function Signin() {
   const [username, SetUsername] = useState('')
@@ -62,7 +62,7 @@ export default function Signin() {
     </div>
   )
   async function SigninRequest() {
-    const URL = `${backendUrl}/admin/login`
+    const URL = `${BASEURL}/admin/login`
     const response = await axios.post(URL, {
       username,
       password
